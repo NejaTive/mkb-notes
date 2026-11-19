@@ -1,0 +1,18 @@
+.todos {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row-enter-active,
+.row-leave-active {
+  transition:
+    opacity 0.18s,
+    transform 0.2s $ease-out;
+}
+
+.row-enter-from,
+.row-leave-to {
+  opacity: 0;
+  transform: translateX(-10px);
+}

@@ -1,0 +1,43 @@
+.preview {
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    min-width: 0;
+    font-family: $font-hand;
+    font-size: 1.35rem;
+    line-height: 1.15;
+
+    :deep(.check) {
+      margin-top: 0.12em;
+    }
+  }
+
+  &__text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__item.is-done &__text {
+    color: var(--ink-faint);
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+  }
+
+  &__more,
+  &__empty {
+    margin: 0.15rem 0 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+}

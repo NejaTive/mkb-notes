@@ -1,0 +1,44 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 28px;
+
+  &__group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__back {
+    color: var(--board-ink);
+  }
+
+  &__delete {
+    color: var(--board-ink);
+  }
+
+  // На телефоне основные действия — в нижней панели под большим пальцем.
+  @include down($bp-sm) {
+    &__group--end {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      justify-content: flex-end;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      background: color-mix(in srgb, var(--board) 88%, #000);
+      box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.25);
+
+      :deep(.btn--primary) {
+        flex: 1;
+      }
+    }
+
+    &__delete :deep(.btn__text) {
+      @include visually-hidden;
+    }
+  }
+}

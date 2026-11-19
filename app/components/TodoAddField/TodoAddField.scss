@@ -1,0 +1,36 @@
+.add {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  height: var(--line, 2.6rem);
+  padding-left: 0.1rem;
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    color: var(--ink-soft);
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    height: var(--line, 2.6rem);
+    padding: 0.2rem 0.1rem 0;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    font-family: $font-hand;
+    font-size: 1.55rem;
+    color: var(--ink);
+
+    &::placeholder {
+      color: var(--ink-faint);
+    }
+
+    &:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.4);
+    }
+  }
+}

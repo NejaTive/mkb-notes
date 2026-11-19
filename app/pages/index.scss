@@ -1,0 +1,155 @@
+.board {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+
+  @include up($bp-md) {
+    padding: 40px 32px 80px;
+  }
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  &__label {
+    padding: 0.5rem 1.1rem 0.6rem;
+    background: var(--label);
+    color: var(--label-ink);
+    border-radius: 3px;
+    transform: rotate(-1.2deg);
+    filter: var(--paper-drop);
+  }
+
+  &__title {
+    margin: 0;
+    font-family: $font-hand;
+    font-size: clamp(2.2rem, 6vw, 3rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__subtitle {
+    margin: 0.15rem 0 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.7;
+  }
+
+  &__warning {
+    margin: 0 0 24px;
+    padding: 0.8rem 1rem;
+    border-radius: $radius-md;
+    background: #fff1c2;
+    color: #5a3b00;
+    font-weight: 600;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+    gap: 36px 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include down($bp-sm) {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }
+
+  &__cell {
+    min-width: 0;
+  }
+
+  &__empty {
+    display: grid;
+    place-items: center;
+    padding-top: 6vh;
+  }
+}
+
+.add-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 100%;
+  min-height: 250px;
+  border: 3px dashed color-mix(in srgb, var(--board-ink) 70%, transparent);
+  border-radius: 4px;
+  background: var(--tile-bg);
+  color: var(--board-ink);
+  font-family: $font-hand;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background-color 0.2s,
+    transform 0.2s $ease-out;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--tile-bg-hover);
+      transform: translateY(-3px);
+    }
+  }
+
+  @include down($bp-sm) {
+    min-height: 120px;
+  }
+}
+
+.empty {
+  width: min(100%, 380px);
+  text-align: center;
+
+  :deep(.paper__sheet) {
+    align-items: center;
+    padding: 2.4rem 1.6rem 2rem;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: $font-hand;
+    font-size: 2.3rem;
+  }
+
+  &__text {
+    margin: 0.4rem 0 1.4rem;
+    color: var(--ink-soft);
+  }
+}
+
+.stick-move {
+  transition: transform 0.35s $ease-out;
+}
+
+.stick-enter-active {
+  transition:
+    opacity 0.25s,
+    transform 0.35s $ease-spring;
+}
+
+.stick-enter-from {
+  opacity: 0;
+  transform: scale(0.9) translateY(-10px);
+}
+
+.stick-leave-active {
+  transition:
+    opacity 0.35s,
+    transform 0.4s ease-in;
+}
+
+.stick-leave-to {
+  opacity: 0;
+  transform: translateY(60px) rotate(12deg);
+}

@@ -1,0 +1,81 @@
+.sheet {
+  // Высота строки и смещение линовки — общие для названия, пунктов и поля нового пункта.
+  --line: 2.6rem;
+  --lines-offset: 9.05rem;
+
+  :deep(.paper__sheet) {
+    padding: 1.9rem 1.4rem 2.2rem;
+    min-height: 460px;
+
+    @include up($bp-sm) {
+      padding: 2.2rem 2.4rem 2.6rem;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px 12px;
+    margin: 0 -6px 0.6rem;
+  }
+
+  &__status {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+
+    &.is-dirty::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-right: 6px;
+      border-radius: 50%;
+      background: #d9480f;
+      vertical-align: 1px;
+    }
+  }
+
+  &__title {
+    width: 100%;
+    padding: 0.1rem 0.15rem;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    font-family: $font-hand;
+    font-size: clamp(2.2rem, 7vw, 2.9rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+
+    &::placeholder {
+      color: var(--ink-faint);
+    }
+
+    &:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    &.has-error {
+      box-shadow: 0 3px 0 var(--danger);
+    }
+  }
+
+  &__error {
+    margin: 0.4rem 0 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #a3221a;
+  }
+
+  &__meta {
+    height: var(--line);
+    padding-top: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+}

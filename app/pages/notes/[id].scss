@@ -1,0 +1,10 @@
+.editor {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 16px 120px;
+
+  @include up($bp-md) {
+    padding: 36px 24px 80px;
+  }
+}

@@ -1,0 +1,26 @@
+.not-found {
+  display: grid;
+  place-items: center;
+  padding-top: 8vh;
+}
+
+.missing {
+  width: min(100%, 420px);
+
+  &__title {
+    margin: 0;
+    font-family: $font-hand;
+    font-size: 2.3rem;
+  }
+
+  &__text {
+    margin: 0.4rem 0 1.4rem;
+    color: var(--ink-soft);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+}
