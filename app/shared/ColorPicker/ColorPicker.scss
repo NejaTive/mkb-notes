@@ -1,0 +1,52 @@
+.colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  &__item {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+  }
+
+  &__input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: inherit;
+  }
+
+  &__swatch {
+    width: 24px;
+    height: 24px;
+    background: var(--paper);
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    border-radius: 4px 6px 3px 7px;
+    transform: rotate(-4deg);
+    transition: transform 0.18s $ease-spring;
+  }
+
+  @media (hover: hover) {
+    &__item:hover &__swatch {
+      transform: rotate(3deg) scale(1.1);
+    }
+  }
+
+  &__input:checked + &__swatch {
+    border-color: var(--ink);
+    border-width: 2.5px;
+    transform: rotate(0) scale(1.15);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+  }
+
+  &__input:focus-visible + &__swatch {
+    @include focus-ring(3px);
+  }
+}

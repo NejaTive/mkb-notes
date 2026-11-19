@@ -1,0 +1,84 @@
+.check {
+  --size: 26px;
+
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  margin: -9px;
+  cursor: pointer;
+
+  &--sm {
+    --size: 18px;
+    width: var(--size);
+    height: var(--size);
+    margin: 0;
+  }
+
+  &--readonly {
+    cursor: default;
+  }
+
+  &__input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: inherit;
+  }
+
+  &__box {
+    display: grid;
+    place-items: center;
+    width: var(--size);
+    height: var(--size);
+    border: 2.2px solid var(--ink);
+    border-radius: 5px 7px 4px 8px / 7px 4px 8px 5px;
+    background: rgba(255, 255, 255, 0.35);
+    transition:
+      transform 0.15s $ease-spring,
+      background-color 0.15s;
+
+    svg {
+      width: 128%;
+      height: 128%;
+      margin: -2px -4px 0 0;
+      fill: none;
+      stroke: var(--ink);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 24;
+      stroke-dashoffset: 24;
+      transition: stroke-dashoffset 0.22s $ease-out;
+    }
+
+    &.is-checked svg {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  &--sm &__box {
+    border-width: 1.8px;
+
+    svg {
+      stroke-width: 3.4;
+    }
+  }
+
+  @media (hover: hover) {
+    &:not(.check--readonly):hover &__box {
+      background: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  &:active:not(.check--readonly) &__box {
+    transform: scale(0.88);
+  }
+
+  &__input:focus-visible + &__box {
+    @include focus-ring(3px);
+  }
+}

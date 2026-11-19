@@ -1,0 +1,90 @@
+.btn {
+  --btn-bg: var(--label);
+  --btn-ink: var(--label-ink);
+  --btn-border: rgba(0, 0, 0, 0.14);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45em;
+  min-height: 44px;
+  padding: 0 1.05em;
+  border: 1.5px solid var(--btn-border);
+  border-radius: $radius-md;
+  background: var(--btn-bg);
+  color: var(--btn-ink);
+  font-family: $font-ui;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.16);
+  transition:
+    transform 0.15s $ease-out,
+    box-shadow 0.15s $ease-out,
+    background-color 0.15s,
+    opacity 0.15s;
+
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 0 rgba(0, 0, 0, 0.18);
+    }
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.16);
+  }
+
+  &:disabled {
+    opacity: 0.42;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  &--sm {
+    min-height: 36px;
+    padding: 0 0.8em;
+    font-size: 0.875rem;
+  }
+
+  &--icon {
+    padding: 0;
+    width: 44px;
+
+    &.btn--sm {
+      width: 36px;
+    }
+  }
+
+  &--primary {
+    --btn-bg: var(--primary);
+    --btn-ink: var(--primary-ink);
+    --btn-border: transparent;
+  }
+
+  &--danger {
+    --btn-bg: var(--danger);
+    --btn-ink: var(--danger-ink);
+    --btn-border: transparent;
+  }
+
+  &--ghost {
+    --btn-bg: transparent;
+    --btn-ink: currentColor;
+    --btn-border: transparent;
+    box-shadow: none;
+
+    @media (hover: hover) {
+      &:hover:not(:disabled) {
+        background: rgba(0, 0, 0, 0.08);
+        box-shadow: none;
+      }
+    }
+  }
+}

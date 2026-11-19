@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320">
+  <!-- Пробка: крупные пятна оттенка + тёмные и светлые гранулы. Тайл бесшовный (stitchTiles). -->
+  <filter id="mottle" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="7" stitchTiles="stitch" />
+    <feColorMatrix values="0 0 0 0 0.36  0 0 0 0 0.22  0 0 0 0 0.09  0 0 0 1.6 -0.62" />
+  </filter>
+  <filter id="dark" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.62" numOctaves="2" seed="3" stitchTiles="stitch" />
+    <feColorMatrix values="0 0 0 0 0.27  0 0 0 0 0.15  0 0 0 0 0.05  0 0 0 4.2 -2.3" />
+  </filter>
+  <filter id="light" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" seed="11" stitchTiles="stitch" />
+    <feColorMatrix values="0 0 0 0 0.93  0 0 0 0 0.78  0 0 0 0 0.55  0 0 0 4.6 -2.65" />
+  </filter>
+  <filter id="pores" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="turbulence" baseFrequency="0.9" numOctaves="1" seed="5" stitchTiles="stitch" />
+    <feColorMatrix values="0 0 0 0 0.18  0 0 0 0 0.1  0 0 0 0 0.03  0 0 0 -6 1.25" />
+  </filter>
+  <rect width="320" height="320" filter="url(#mottle)" />
+  <rect width="320" height="320" filter="url(#light)" />
+  <rect width="320" height="320" filter="url(#dark)" />
+  <rect width="320" height="320" filter="url(#pores)" />
+</svg>

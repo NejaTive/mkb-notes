@@ -1,0 +1,87 @@
+$fold: 26px;
+
+.paper {
+  --line: 2.25rem;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: var(--ink);
+  filter: var(--paper-filter) var(--paper-drop);
+  transform: rotate(var(--tilt));
+  transition:
+    transform 0.3s $ease-out,
+    filter 0.3s $ease-out;
+
+  &--lift {
+    @media (hover: hover) {
+      &:hover {
+        transform: rotate(0deg) translateY(-4px) scale(1.015);
+        filter: var(--paper-filter) var(--paper-drop-lift);
+      }
+    }
+
+    &:focus-within {
+      transform: rotate(0deg) translateY(-4px);
+      filter: var(--paper-filter) var(--paper-drop-lift);
+    }
+  }
+
+  &__sheet {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.7rem 1.25rem 1.5rem;
+    background-color: var(--paper);
+    background-image: linear-gradient(176deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 32%);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - #{$fold}), calc(100% - #{$fold}) 100%, 0 100%);
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: $fold;
+      height: $fold;
+      background: linear-gradient(
+        315deg,
+        transparent 50%,
+        var(--paper-edge) 50%,
+        color-mix(in srgb, var(--paper-edge) 60%, var(--paper)) 100%
+      );
+      pointer-events: none;
+    }
+  }
+
+  &--lined &__sheet {
+    background-image:
+      linear-gradient(176deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 32%),
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent calc(var(--line) - 1px),
+        color-mix(in srgb, var(--paper-edge) 60%, transparent) calc(var(--line) - 1px),
+        color-mix(in srgb, var(--paper-edge) 60%, transparent) var(--line)
+      );
+    background-position:
+      0 0,
+      0 var(--lines-offset, 4.4rem);
+  }
+
+  &__tape {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    width: 36%;
+    min-width: 64px;
+    max-width: 120px;
+    height: 26px;
+    transform: translateX(-50%) rotate(calc(var(--tilt) * -1.5 - 2deg));
+    background: var(--tape);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    mask: linear-gradient(90deg, transparent 0 2px, #000 2px calc(100% - 2px), transparent calc(100% - 2px));
+    z-index: 2;
+    pointer-events: none;
+  }
+}
