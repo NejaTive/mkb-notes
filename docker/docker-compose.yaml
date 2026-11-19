@@ -1,0 +1,12 @@
+# Запуск из папки docker:      docker-compose up --build
+# или из корня репозитория:    docker-compose -f docker/docker-compose.yaml up --build
+services:
+  app:
+    build:
+      # Контекст сборки — корень репозитория (исходники, package.json), Dockerfile — рядом с этим файлом.
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: mkb-notes:latest
+    ports:
+      - '8080:80'
+    restart: unless-stopped
