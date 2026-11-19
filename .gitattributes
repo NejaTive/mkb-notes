@@ -1,0 +1,13 @@
+# Все текстовые файлы хранятся и выгружаются с LF — как требует Prettier (endOfLine: lf),
+# независимо от core.autocrlf у того, кто клонирует репозиторий.
+* text=auto eol=lf
+
+# Бинарные файлы не трогаем
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.woff binary
+*.woff2 binary
